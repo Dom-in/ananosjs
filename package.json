@@ -1,0 +1,64 @@
+{
+  "name": "@ananosnetwork/ananosjs",
+  "version": "0.0.1",
+  "module": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ananosnetwork/ananosjs.git"
+  },
+  "scripts": {
+    "build-export-ts": "node build/export-ts.js",
+    "build": "node build/build.js",
+    "camo-test": "./node_modules/mocha/bin/mocha.js -t 1000000 test/camo",
+    "coverage": "nyc -x 'test/util/**' -x 'test/unit/**' -x 'libraries/**' -x '**/mock-ananode-api.js' ./node_modules/mocha/bin/mocha.js -t 100000 test/unit",
+    "coverage-win": "nyc -x 'test\\util\\**' -x 'test\\unit\\**' -x 'libraries\\**' -x '**\\mock-ananode-api.js' -x '**\\ananode-api.js' .\\node_modules\\mocha\\bin\\mocha -t 100000 test\\unit",
+    "docs": "jsdoc2md documentation.js index.js app/scripts/*.js > docs/documentation.md",
+    "eslint": "eslint --fix '**/*.js'",
+    "multisig-test": "./node_modules/mocha/bin/mocha.js -t 1000000 test/multisig",
+    "npm-check-updates": "npm-check-updates --target minor -u",
+    "preflight": "npm update && npm run npm-check-updates && npm i && npm audit fix && npm run eslint && npm run prettier && npm run coverage && npm run docs && npm run build && npm run typescript && npm run build-export-ts && npm outdated && echo 'preflight passed'",
+    "prenpmpublish": "npm --no-git-tag-version version patch && npm run build && npm run typescript  && npm run build-export-ts;",
+    "prettier": "prettier \"**/**.{ts,json,css,scss,html}\" --write",
+    "test": "./node_modules/mocha/bin/mocha.js -t 100000 test/unit",
+    "test-win": ".\\node_modules\\mocha\\bin\\mocha -t 100000 test\\unit",
+    "typescript": "./node_modules/jsdoc/jsdoc.js -t node_modules/tsd-jsdoc/dist/ documentation.js index.js app/scripts/*.js -d console > index.d.ts",
+    "vanity-test": "./node_modules/mocha/bin/mocha.js -t 1000000 test/vanity",
+    "square-proof-test": "./node_modules/mocha/bin/mocha.js -t 1000000 test/square-proof",
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "package": "^1.0.1",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "bigint-crypto-utils": "^3.3.0",
+    "blakejs": "^1.2.1",
+    "chai": "^4.4.1",
+    "elliptic": "^6.5.4",
+    "eslint": "^8.56.0",
+    "eslint-config-google": "^0.14.0",
+    "jsdoc": "^4.0.2",
+    "jsdoc-to-markdown": "^8.0.1",
+    "mocha": "^10.3.0",
+    "npm-check-updates": "^16.14.15",
+    "nyc": "^15.1.0",
+    "prettier": "^3.2.5",
+    "tsd-jsdoc": "^2.5.0"
+  },
+  "description": "JavaScript utilities for the ananos cryptocurrency.",
+  "bugs": {
+    "url": "https://github.com/ananosnetwork/ananosjs/issues"
+  },
+  "homepage": "https://github.com/ananosnetwork/ananosjs#readme",
+  "directories": {
+    "test": "test"
+  },
+  "overrides": {
+    "tsd-jsdoc": {
+      "jsdoc": "4.0.2"
+    }
+  }
+}
