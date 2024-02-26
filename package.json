@@ -1,6 +1,6 @@
 {
-  "name": "@ananosnetwork/ananosjs",
-  "version": "0.0.1",
+  "name": "ananosjs",
+  "version": "0.1.0",
   "module": "index.js",
   "repository": {
     "type": "git",
